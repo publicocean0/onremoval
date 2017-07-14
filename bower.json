@@ -1,0 +1,15 @@
+{
+  "name": "onremoval.js",
+  "version": "1.0.0",
+  "description": "simple utility for adding a generic listener when a dom node is removed",
+  "main": "onremoval.js",
+  "private": false,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+  
+}
