@@ -1,0 +1,2 @@
+# onremoval
+ DOM node callback
