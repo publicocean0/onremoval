@@ -2,12 +2,12 @@
  DOM node callback
  This is a utility callback for detecting when a dom node is removed.
 <pre>
-el.onRemoval(function(el){
+onRemoval(el,function(el){
 console.log('removing1') 
 })
-el.onRemoval(function(el){
+onRemoval(el,function(el){
 console.log('executing ....') 
 })
 
-el.offRemoval() // you can pass directly the callback to remove
+offRemoval(el) // you can pass directly the callback to remove
 </pre>
