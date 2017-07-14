@@ -39,10 +39,12 @@ if (a<0) {
 		if (! MutationObserver &&window.addEventListener){
 			(function(el,list){
 			el.onRemoval=function(){
+				var a=indexes.indexOf(el);
 				list.forEach(function(l){
 					l(el);
 				});
-				
+				if (indexes.length-1>a) for(var i=a+1;i<indexes.length-1;i++) nodes[i-1]=nodes[i]
+				indexes.splice(a,1)
 			}
 			el.addEventListener('DOMNodeRemoved', el.onRemoval, false);
 		})(el,a)
