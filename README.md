@@ -1,4 +1,4 @@
-# onremoval
+# onRemoval
  DOM node callback
  This is a utility callback for detecting when a dom node is removed.
 <pre>
