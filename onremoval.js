@@ -1,21 +1,35 @@
 (function(window){
-var indexes=[];
-var nodes={}
+var indexes=[]; //index for element
+var parents={} // elem -> []
+var nodes={}// calbacks
 var MutationObserver = window.MutationObserver || window.WebKitMutationObserver || window.MozMutationObserver;
 // create an observer instance
+function findAncestor (el, p) {
+    while ((el = el.parentElement) && p!=el) ;
+    return el==p;
+}
 if (MutationObserver){
 var observer = new MutationObserver(function(mutations) {
   mutations.forEach(function(mutation) {
 	var r=mutation.removedNodes;
     if (r.length){
-		r.forEach(function(el){
-			var a=indexes.indexOf(el)
-			if (a>=0) {
-				nodes[a].forEach(function(f){f(el);});
+		r.forEach(function(el){// el element removed
+
+			for(var i=0;i<indexes.length;i++){
+				var a=indexes[i]
+				if (findAncestor(a,el)){
+					
+				nodes[i].forEach(function(f){f(el);});
 				
-				if (indexes.length-1>a) for(var i=a+1;i<indexes.length-1;i++) nodes[i-1]=nodes[i]
-				indexes.splice(a,1)
+				if (indexes.length-1>i) for(var j=i+1;j<indexes.length-1;j++) nodes[j-1]=nodes[j]
+				indexes.splice(i,1)
+					
+				break;	
+				}
+				
+				
 			}
+			
 			
 			
 			
@@ -47,6 +61,7 @@ if (a<0) {
 				indexes.splice(a,1)
 			}
 			el.addEventListener('DOMNodeRemoved', el.onRemoval, false);
+			while ((el = el.parentElement)) el.addEventListener('DOMNodeRemoved', el.onRemoval,false);
 		})(el,a)
 		}
 	}
@@ -66,6 +81,7 @@ if (a) {
    if (! MutationObserver &&window.removeEventListener){
 			
 			el.removeEventListener('DOMNodeRemoved', el.onRemoval);
+			while ((el = el.parentElement)) el.removeEventListener('DOMNodeRemoved', el.onRemoval);
 				
 	}	
 		
