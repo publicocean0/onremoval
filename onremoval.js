@@ -39,10 +39,13 @@ var observer = new MutationObserver(function(mutations) {
 });
 observer.observe(document, { attributes: false, childList: true, characterData: false,subtree:true}); 
 } 
-  
+
+
+
+
 
  
-window.onRemoval=function(el,func){
+var onRemoval=function(el,func){
 
 var a=el?indexes.indexOf(el):-1;
 if (a<0) {
@@ -68,7 +71,7 @@ if (a<0) {
 } 
 if (typeof(func)=='function') a.push(func)	
 };
-window.offRemoval=function(el,func){
+var offRemoval=function(el,func){
 var a=el?indexes.indexof(el):-1;
 if (a) {
 	
@@ -89,7 +92,31 @@ if (a) {
 } 
 
 };
+// #ifdef useListener
+var orig_addEventListener = Element.prototype.addEventListener;
+Element.prototype.addEventListener = function (type, listener, useCapture) {
+        if (type=='removal'){
+			onRemoval(this,listener)
+			
+		} else     
+        
+        return orig_addEventListener.call(this, type, listener, useCapture);  
+};
+
 	
+var orig_removeEventListener = Element.prototype.removeEventListener;
+Element.prototype.removeEventListener = function (type, listener, useCapture) {
+        if (type=='removal'){
+			offRemoval(this,listener)
+			
+		} else     
+        
+        return orig_removeEventListener.call(this, type, listener, useCapture);  
+};
+// #else
+window.onRemoval=onRemoval
+window.offRemoval=offRemoval
+// #endif
 
 
 })(window)
