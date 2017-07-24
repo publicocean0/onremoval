@@ -10,6 +10,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "defaults":{
+  "enablePreprocessor":true,
+  "preprocessorContext":{
+    useListener:true
+  }
+  }
   
 }
