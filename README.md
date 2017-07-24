@@ -29,14 +29,14 @@ offRemoval(el) // you can pass directly the callback to remove
  DOM node callback
  This is a utility callback for detecting when a dom node is removed.
 <pre>
-el.addListener('removal',function(el){
+el.addEventListener('removal',function(el){
 console.log('removing1') 
 })
-el.addListener('removal',function(el){
+el.addEventListener('removal',function(el){
 console.log('executing ....') 
 })
 
-el.removeListener('removal') // you can pass directly the callback to remove
+el.removeEventListener('removal') // you can pass directly the callback to remove
 
 
 </pre>
