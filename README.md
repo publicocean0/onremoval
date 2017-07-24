@@ -1,6 +1,10 @@
 #onRemoval
+
 It is suggested to use bindep tool for including this component.Anyway it works also in standard bower. 
-bindep default preprocessor context: useListener=true
+Bindep default preprocessor context is:
+
+  useListener=true
+
 # global scope api 
 (useListener=false in preprocessor or no preprocessing)
 
