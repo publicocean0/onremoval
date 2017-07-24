@@ -1,4 +1,7 @@
-# onRemoval api 
+#onRemoval
+It is suggested to use bindep tool for including this component.Anyway it works also in standard bower. 
+bindep default preprocessor context: useListener=true
+# global scope api 
 (useListener=false in preprocessor or no preprocessing)
 
  DOM node callback
