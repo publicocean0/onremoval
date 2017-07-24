@@ -1,5 +1,5 @@
 # onRemoval
-
+This component permits to detect when a dom node is removed directly or indirectly removing a parent node.
 It is suggested to use bindep tool for including this component.Anyway it works also in standard bower. 
 Bindep default preprocessor context is:
 
