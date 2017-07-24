@@ -1,4 +1,4 @@
-# onRemoval api (useListener=false in preprocessor)
+# onRemoval api (useListener=false in preprocessor or no preprocessing)
  DOM node callback
  This is a utility callback for detecting when a dom node is removed.
 <pre>
@@ -13,7 +13,7 @@ offRemoval(el) // you can pass directly the callback to remove
 
 
 </pre>
-# listener api (useListener=true in preprocessor)
+# listener api (useListener=true in preprocessor or no preprocessing)
  DOM node callback
  This is a utility callback for detecting when a dom node is removed.
 <pre>
